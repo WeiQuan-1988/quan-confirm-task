@@ -1,7 +1,6 @@
 #Practice of linear regression on Iris dataset
-
 from sklearn import datasets, linear_model
-# from sklearn.svm import SVR
+from sklearn.svm import LinearSVC
 from sklearn.model_selection import train_test_split
 
 iris = datasets.load_iris()
@@ -10,7 +9,7 @@ y = iris.target
 print("X.shape:{}".format(X.shape))
 print("y.shape:{}".format(y.shape))
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=0)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 print("X_train.shape:{}".format(X_train.shape))
 print("X_test.shape:{}".format(X_test.shape))
 print("y_train.shape:{}".format(y_train.shape))
@@ -25,3 +24,8 @@ LinearRegression = linear_model.LinearRegression(fit_intercept=True, normalize=F
 LinearRegression.fit(X_train, y_train)
 print('Linear Regression Coefficients:%s,intercept%s'%(LinearRegression.coef_, LinearRegression.intercept_))
 print("Linear Regression score on test:%.2f"%LinearRegression.score(X_test, y_test))
+
+SVC = LinearSVC()
+SVC.fit(X_train, y_train)
+print('SVC Regression Coefficients:%s,intercept%s'%(SVC.coef_, SVC.intercept_))
+print("SVC Regression score on test:%.2f"%SVC.score(X_test, y_test))
